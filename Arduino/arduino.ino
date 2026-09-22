@@ -1,6 +1,6 @@
 bool startLoop = false;
 bool stopLoop = false;
-
+long startTime = 0
 
 void setup() {
   pinMode(LED_BUILTIN,OUTPUT);
@@ -19,11 +19,11 @@ void setup() {
 
 
 void loop() {
+  time = micros() - startTime;
+  Serial.println(time);
+  delay(1000)
+
   digitalWrite(LED_BUILTIN, HIGH);
-
-
-
-
   if (Serial.available() > 0){
     stopLoop = (Serial.read() == 115);
      if(stopLoop) NVIC_SystemReset();
